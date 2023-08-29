@@ -1,0 +1,12 @@
+.sidebar {
+    margin-top: 40px;
+    padding: 15;
+    list-style: none;
+}
+
+
+body{
+       background-image: url('img/fonas.jpg');
+       background-size: cover;
+       background-repeat: no-repeat;
+  }

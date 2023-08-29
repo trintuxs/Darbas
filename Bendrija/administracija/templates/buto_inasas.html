@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block "content" %}
+
+{% if user.is_authenticated %}
+<h1>Mano Mėnesinio Inaso</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Buto Numeris</th>
+            <th>Kvadratinio metro ikainis</th>
+            <th>Mėnesinis Inasas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for kaupiamasis_inasas in kaupiamasis_inasas_objects %}
+                <!--{% if kaupiamasis_inasas.flat_owner.user == user %}-->
+                <tr>
+                    <td>{{ kaupiamasis_inasas.flat_owner.flat_nr }}</td>
+                    <td>{{ kaupiamasis_inasas.payment_rate }}</td>
+                    <td>{{ kaupiamasis_inasas.calculate_monthly_inasas }}</td>
+                </tr>
+            <!--{% endif %}-->
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Bendras Visų Inasas: {{ total_inasas }}</h2>
+
+<h2>Išlaidos</h2>
+<ul>
+    {% for expense in expenses %}
+    <li>{{ expense.description }}: {{ expense.repairs_cost }} €</li>
+    {% endfor %}
+</ul>
+
+<h2>Skaičiavimai</h2>
+<p>Bendros išlaidos: {{ total_expenses }} €</p>
+<p>Likutis: {{ balance|floatformat:2 }} €</p>
+
+<h2>Darbuotojų Atlyginimai</h2>
+<p>Darbuotojų atlyginimas vienam butui: {{ wage_per_flat|floatformat:2 }} €</p>
+<p>Visų darbuotojų atlyginimas: {{ total_wages }} €</p>
+
+{% else %}
+<p>Prašome prisijungti, kad galėtumėte peržiūrėti šį turinį.</p>
+{% endif %}
+
+{% endblock %}

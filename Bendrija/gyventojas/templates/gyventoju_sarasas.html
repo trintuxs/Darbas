@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+
+    <h1>Gyventojų sąrašas</h1>
+    <ul>
+        {% for resident in object_list %}
+            <li>{{ resident.first_name }} {{ resident.last_name }}</li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

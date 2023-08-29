@@ -1,0 +1,19 @@
+<!-- visos_diskusijos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visos Diskusijos</title>
+</head>
+<body>
+    <h1>Visos Diskusijos</h1>
+    <a href="{% url 'kurti_diskusija' %}">Sukurti naują diskusiją</a>
+    <ul>
+        {% for diskusija in diskusijos %}
+            <li>
+                <a href="{% url 'diskusija_detail' diskusija_id=diskusija.id %}">{{ diskusija.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

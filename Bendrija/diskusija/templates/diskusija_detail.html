@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalės apie diskusiją</title>
+</head>
+<body>
+    <h1>{{ diskusija.title }}</h1>
+    <p>{{ diskusija.text }}</p>
+    <p>Data: {{ diskusija.date }}</p>
+    <p>Patiko: {{ diskusija.likes }}</p>
+    <p>Nepatiko: {{ diskusija.dislikes }}</p>
+
+    <!-- Atvaizduokite komentarus -->
+    <h2>Komentarai:</h2>
+    <ul>
+        {% for komentaras in komentarai %}
+            <li>
+                <strong>{{ komentaras.gyventojas.first_name }} {{ komentaras.gyventojas.last_name }}:</strong>
+                {{ komentaras.turinys }}
+            </li>
+        {% endfor %}
+    </ul>
+<a href="{% url 'kurti_diskusija' %}">Sukurti naują diskusiją</a>
+    <!-- Pridėkite komentaro formą -->
+    <form method="post" action="{% url 'prideti_komentara' diskusija_id=diskusija.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Pridėti komentarą</button>
+    </form>
+</body>
+</html>

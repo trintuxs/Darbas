@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block "content" %}
+    <h1>Butų sąrašas</h1>
+    <ul>
+        {% for butas in butas %}
+            <li>{{ butas.flat_nr }} - {{ butas.size_kv }} kv.m.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

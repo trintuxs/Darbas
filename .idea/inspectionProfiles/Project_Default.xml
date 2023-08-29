@@ -1,0 +1,35 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Annotator" enabled="true" level="ERROR" enabled_by_default="true">
+      <option name="runVisitors" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="1">
+            <item index="0" class="java.lang.String" itemvalue="center-text" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="irankiai.irankis" />
+          <option value="administracija.models.Vadovybe.objects" />
+          <option value="django.views.islaidos" />
+          <option value="django.views.balsavimas" />
+          <option value="django.views.diskusija" />
+          <option value="django.contrib.sites.admin.site.urls" />
+          <option value="diskusija.models.Komentaras.*" />
+          <option value="gyventojas.models.Gyventojas.*" />
+          <option value="diskusija.models.Diskusija.objects" />
+          <option value="administracija.models.Kaupiamsis_Inasas.*" />
+          <option value="administracija.models.Expenses.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
