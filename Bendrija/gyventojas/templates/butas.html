@@ -1,9 +1,18 @@
 {% extends "base.html" %}
+
 {% block "content" %}
+
+
+
+
     <h1>Butų sąrašas</h1>
     <ul>
-        {% for butas in butas %}
-            <li>{{ butas.flat_nr }} - {{ butas.size_kv }} kv.m.</li>
-        {% endfor %}
+        {% if user.is_authenticated %}
+            {% for butas in butas %}
+                <li>{{ butas.flat_nr }} - {{ butas.size_kv }} kv.m.</li>
+            {% endfor %}
+        {% else %}
+            <p>Prašome prisijungti, kad galėtumėte pamatyti butų sąrašą.</p>
+        {% endif %}
     </ul>
 {% endblock %}

@@ -6,14 +6,28 @@
     <title>Visos Diskusijos</title>
 </head>
 <body>
+
+<ul>
+    <li><a href="{% url 'index' %}">Atgal</a></li>
+</ul>
+
+
+
+ {% if user.is_authenticated %}
+
     <h1>Visos Diskusijos</h1>
     <a href="{% url 'kurti_diskusija' %}">Sukurti naują diskusiją</a>
     <ul>
+
         {% for diskusija in diskusijos %}
             <li>
                 <a href="{% url 'diskusija_detail' diskusija_id=diskusija.id %}">{{ diskusija.title }}</a>
             </li>
         {% endfor %}
+
+  {% else %}
+            <p>Prašome prisijungti, kad galėtumėte pamatyti butų sąrašą.</p>
+        {% endif %}
     </ul>
 </body>
 </html>

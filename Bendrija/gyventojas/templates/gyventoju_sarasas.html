@@ -2,6 +2,11 @@
 
 {% block "content" %}
 
+<ul>
+    <li><a href="{% url 'index' %}">Atgal</a></li>
+</ul>
+
+
     <h1>Gyventojų sąrašas</h1>
     <ul>
         {% for resident in object_list %}

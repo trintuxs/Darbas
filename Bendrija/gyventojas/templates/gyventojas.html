@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 {% block "content" %}
+
+<ul>
+    <li><a href="{% url 'index' %}">Atgal</a></li>
+</ul>
+
+
+
     <h1>Gyventojų sąrašas</h1>
     <ul>
-        {% for gyventojas in gyventojas %}
-            <li>{{ gyventojas.first_name }} {{ gyventojas.last_name }}</li>
-        {% endfor %}
+        {% if user.is_authenticated %}
+            {% for gyventojas in gyventojas %}
+                <li>{{ gyventojas.first_name }} {{ gyventojas.last_name }}</li>
+            {% endfor %}
+         {% else %}
+            <p>Prašome prisijungti, kad galėtumėte pamatyti butų sąrašą.</p>
+        {% endif %}
     </ul>
 {% endblock %}

@@ -4,9 +4,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-
                   path('gyventojas/', include('gyventojas.urls')),
+                  path('admin/', admin.site.urls),
                   path('administracija/', include('administracija.urls')),
                   path('diskusija/', include('diskusija.urls')),
                   path('accounts/', include('django.contrib.auth.urls')),

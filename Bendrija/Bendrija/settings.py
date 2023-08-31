@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
-
+from dotenv import load_dotenv
+load_dotenv()
 from celery.schedules import crontab
-
 from django.utils.translation import gettext_lazy as _
 
 
@@ -14,10 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e7)(x8x&@4fzuaoegiz14%(li4w#f0jf^#i5+(+7vejjr90ijx'
-
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = True if os.getenv("DEBUG") == "True" else False
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 REST_FRAMEWORK = {
@@ -120,7 +120,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = 'static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
@@ -140,7 +140,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ilgoji4bendrija@gmail.com'
 # el. pašto adresas iš kurio siųsite
 #email- from send letters
-EMAIL_HOST_PASSWORD = 'hnvsoxkecdcsgydn'
+
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 # slaptažodis
 #password
 DEFAULT_FROM_EMAIL = 'ilgoji4bendrija@gmail.com'

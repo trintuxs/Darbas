@@ -11,6 +11,3 @@ urlpatterns = [
 ]
 
 
-
-#path('register/', views.register, name='register'),
-#path('prisijungti/', views.prisijungimas, name='prisijungti'),

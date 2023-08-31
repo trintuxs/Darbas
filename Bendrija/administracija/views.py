@@ -1,13 +1,9 @@
 from django.shortcuts import render
 from .models import Kaupiamasis_Inasas, Expenses, Staff
 
-
-
-
-
 def index(request):
     # Gauti visus Kaupiamasis_Inasas objektus
-    kaupiamasis_inasas_objects = Kaupiamasis_Inasas.objects.all()
+    kaupiamasis_inasas_objects = Kaupiamasis_Inasas.objects.filter(flat_owner__owner=request.user)
 
     # Apskaičiuoti bendrą visų butų inasų sumą
     total_inasas = sum(kaupiamasis_inasas.calculate_size() for kaupiamasis_inasas in kaupiamasis_inasas_objects)

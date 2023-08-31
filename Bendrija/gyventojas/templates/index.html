@@ -4,8 +4,17 @@
 
 {% block "content" %}
 
-    <h1>Index Page</h1>
-    <p>Gyventojų skaičius: {{ rezident }}</p>
-    <p>Butų skaičius: {{ flats }}</p>
+
+
+<style>
+
+     h1, h3 {
+    text-align: center;
+  }
+</style>
+
+    <h1>Sveiki bendrijos nariai</h1>
+    <h3>Gyventojų skaičius: {{ rezident }}</h3>
+    <h3>Butų skaičius: {{ flats }}</h3>
 
 {% endblock %}

@@ -1,6 +1,12 @@
+from administracija.models import Expenses, Staff, Kaupiamasis_Inasas
 from django.contrib import admin
 
-from administracija.models import Kaupiamasis_Inasas, Expenses, Staff
+
+
+
+
+
+
 
 # Register your models here.
 admin.site.register(Kaupiamasis_Inasas)
