@@ -1,5 +1,7 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from .models import Kaupiamasis_Inasas, Expenses, Staff
+
 
 def index(request):
     # Gauti visus Kaupiamasis_Inasas objektus
@@ -21,11 +23,12 @@ def index(request):
     staff = Staff.objects.all()
 
     # Apskaičiuoti darbuotojų atlyginimų sumą
-    total_wages = sum(staff_member.wage for staff_member in staff)
+    total_wages = staff.aggregate(total_wages=Sum('wage'))['total_wages'] or 0
 
     # Padalinti darbuotojų atlyginimus iš butų skaičiaus
-    if len(kaupiamasis_inasas_objects) > 0:
-        wage_per_flat = total_wages / len(kaupiamasis_inasas_objects)
+    number_of_flats = len(kaupiamasis_inasas_objects)
+    if number_of_flats > 0:
+        wage_per_flat = total_wages / number_of_flats
     else:
         wage_per_flat = 0
 
@@ -42,3 +45,7 @@ def index(request):
 
     return render(request, 'buto_inasas.html', context=context)
 
+
+def staff_list(request):
+    staff = Staff.objects.all()
+    return render(request, 'buto_inasas.html', {'staff': staff})

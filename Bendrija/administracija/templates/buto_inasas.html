@@ -41,6 +41,15 @@
 <p>Bendros išlaidos: {{ total_expenses }} €</p>
 <p>Likutis: {{ balance|floatformat:2 }} €</p>
 
+<h2>
+    Darbuotoju informacija
+</h2>
+
+{% for employee in staff %}
+    <p>{{ duties }} - {{ wage }}</p>
+{% endfor %}
+
+
 <h2>Darbuotojų Atlyginimai</h2>
 <p>Darbuotojų atlyginimas vienam butui: {{ wage_per_flat|floatformat:2 }} €</p>
 <p>Visų darbuotojų atlyginimas: {{ total_wages }} €</p>

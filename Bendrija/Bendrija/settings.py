@@ -1,14 +1,13 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+
 load_dotenv()
 from celery.schedules import crontab
 from django.utils.translation import gettext_lazy as _
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -19,7 +18,8 @@ DEBUG = True if os.getenv("DEBUG") == "True" else False
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['bendrija.org', '127.0.0.1']
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
@@ -73,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Bendrija.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -83,7 +82,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -103,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -116,7 +113,6 @@ LANGUAGE_CODE = 'lt'
 TIME_ZONE = 'Europe/Vilnius'
 USE_I18N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -131,31 +127,28 @@ LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ilgoji4bendrija@gmail.com'
 # el. pašto adresas iš kurio siųsite
-#email- from send letters
+# email- from send letters
 
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 # slaptažodis
-#password
+# password
 DEFAULT_FROM_EMAIL = 'ilgoji4bendrija@gmail.com'
 
-
 # settings.py
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' # Nurodo Celery brokerį (naudojame Redis)
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'  # Nurodo Celery brokerį (naudojame Redis)
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'  # Nurodo, kur Celery turi saugoti rezultatus
 CELERY_TIMEZONE = 'Europe/Vilnius'  # Nurodo laiko juostą
 
 # Celery Beat konfigūracija
 CELERY_BEAT_SCHEDULE = {
     'siusti_menesine_ataskaita': {
-        'task': 'Bendrija.ataskaita.siusti_menesine_ataskaita',  # Pakeiskite į jūsų projekto funkcijos pavadinimą
+        'task': 'Bendrija.ataskaita.siusti_menesine_ataskaita',
         'schedule': crontab(day_of_month='8', hour='0', minute='0'),  # Kiekvieno mėnesio 8 diena, 00:00 val.
     },
 }
