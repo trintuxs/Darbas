@@ -152,3 +152,24 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(day_of_month='8', hour='0', minute='0'),  # Kiekvieno mėnesio 8 diena, 00:00 val.
     },
 }
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'django-logfile'),
+        },
+    },
+    'root': {
+        'level': 'INFO',
+        'handlers': ['console', 'logfile']
+    },
+}
