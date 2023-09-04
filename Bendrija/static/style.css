@@ -10,5 +10,6 @@ body {
        background-image: url('static/gyventojas/img/fonas.jpg');
        background-size: cover;
        background-repeat: no-repeat;
+       background-color: red;
   }
 

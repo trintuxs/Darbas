@@ -1,5 +1,7 @@
-from django.db.models import Sum
+from django.db.models import Sum, Count
 from django.shortcuts import render
+
+from gyventojas.models import Flat
 from .models import Kaupiamasis_Inasas, Expenses, Staff
 
 
@@ -26,7 +28,7 @@ def index(request):
     total_wages = staff.aggregate(total_wages=Sum('wage'))['total_wages'] or 0
 
     # Padalinti darbuotojų atlyginimus iš butų skaičiaus
-    number_of_flats = len(kaupiamasis_inasas_objects)
+    number_of_flats = Flat.objects.annotate(num_flats=Count('owner')).filter(num_flats__gt=0).count()
     if number_of_flats > 0:
         wage_per_flat = total_wages / number_of_flats
     else:
