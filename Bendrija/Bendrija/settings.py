@@ -117,7 +117,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = 'static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
@@ -150,11 +150,11 @@ CELERY_TIMEZONE = 'Europe/Vilnius'  # Nurodo laiko juostą
 CELERY_BEAT_SCHEDULE = {
     'siusti_menesine_ataskaita': {
         'task': 'Bendrija.ataskaita.siusti_menesine_ataskaita',
-        'schedule': crontab(day_of_month='8', hour='0', minute='0'),  # Kiekvieno mėnesio 8 diena, 00:00 val.
+        'schedule': crontab(day_of_month='6', hour='0', minute='0'),  # Kiekvieno mėnesio 8 diena, 00:00 val.
     },
 }
 
-
+CSRF_TRUSTED_ORIGINS = ['https://bendrija.org', 'https://127.0.0.1']
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

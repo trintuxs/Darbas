@@ -22,11 +22,7 @@ class Kaupiamasis_Inasas(models.Model):
         return self.calculate_size()
 
     # Bendras visu inasas
-    def calculate_total_inasas(self):
-        kaupiamasis_inasas_objects = Kaupiamasis_Inasas.objects.all()
-        total_inasas = sum(kaupiamasis_inasas.calculate_size() for kaupiamasis_inasas in kaupiamasis_inasas_objects)
 
-        return total_inasas
 
 
 class Expenses(models.Model):

@@ -1,4 +1,4 @@
-from django.db.models import Sum, Count
+from django.db.models import Sum
 from django.shortcuts import render
 
 from gyventojas.models import Flat
@@ -6,17 +6,20 @@ from .models import Kaupiamasis_Inasas, Expenses, Staff
 
 
 def index(request):
-    # Gauti visus Kaupiamasis_Inasas objektus
+    # Gauti visus butus, priklausančius šiam vartotojui
+    flats = Flat.objects.filter(owner=request.user)
+
+    # Gauti visus butų kaupiamojo inaso objektus, priklausančius šiems butams
     kaupiamasis_inasas_objects = Kaupiamasis_Inasas.objects.filter(flat_owner__owner=request.user)
 
     # Apskaičiuoti bendrą visų butų inasų sumą
-    total_inasas = sum(kaupiamasis_inasas.calculate_size() for kaupiamasis_inasas in kaupiamasis_inasas_objects)
+    total_inasas = kaupiamasis_inasas_objects.aggregate(total_size=Sum('flat_owner__size_kv'))['total_size'] or 0
 
     # Gauti visas išlaidas
     expenses = Expenses.objects.all()
 
     # Apskaičiuoti bendras išlaidas
-    total_expenses = sum(expense.repairs_cost for expense in expenses)
+    total_expenses = expenses.aggregate(total=Sum('repairs_cost'))['total'] or 0
 
     # Apskaičiuoti likutį
     balance = total_inasas - total_expenses
@@ -28,7 +31,7 @@ def index(request):
     total_wages = staff.aggregate(total_wages=Sum('wage'))['total_wages'] or 0
 
     # Padalinti darbuotojų atlyginimus iš butų skaičiaus
-    number_of_flats = Flat.objects.annotate(num_flats=Count('owner')).filter(num_flats__gt=0).count()
+    number_of_flats = flats.count()
     if number_of_flats > 0:
         wage_per_flat = total_wages / number_of_flats
     else:

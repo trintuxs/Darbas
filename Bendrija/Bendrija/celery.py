@@ -24,8 +24,8 @@ def debug_task(self):
 # Pridedame periodinę užduotį siųsti mėnesinę ataskaitą
 app.conf.beat_schedule = {
     'siusti-menesine-ataskaita': {
-        'task': 'Bendrija.siusti_menesine_ataskaita',  # Keiskite 'jusu_projekto' į savo projekto pavadinimą.
-        'schedule': crontab(day_of_month='26', hour='0', minute='0'),  # Vykdymas kiekvieno mėnesio 8 dieną 00:00 val.
+        'task': 'Bendrija.siusti_menesine_ataskaita',
+        'schedule': crontab(day_of_month='6', hour='0', minute='0'),  # Vykdymas kiekvieno mėnesio 8 dieną 00:00 val.
     },
 }
 
