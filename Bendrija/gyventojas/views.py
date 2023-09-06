@@ -11,6 +11,7 @@ from .models import Resident, Flat
 
 def index(request):
     rezident = Resident.objects.count()
+    rezident -= 1
     flats = Flat.objects.count()
     context = {
         'rezident': rezident,
