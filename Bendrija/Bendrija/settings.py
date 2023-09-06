@@ -154,7 +154,7 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://bendrija.org', 'https://127.0.0.1', '45.93.139.47']
+CSRF_TRUSTED_ORIGINS = ['https://bendrija.org', 'https://127.0.0.1', 'http://45.93.139.47']
 
 LOGGING = {
     'version': 1,
