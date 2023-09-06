@@ -145,12 +145,12 @@ DEFAULT_FROM_EMAIL = 'ilgoji4bendrija@gmail.com'
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'  # Nurodo Celery brokerį (naudojame Redis)
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'  # Nurodo, kur Celery turi saugoti rezultatus
 CELERY_TIMEZONE = 'Europe/Vilnius'  # Nurodo laiko juostą
-
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 # Celery Beat konfigūracija
 CELERY_BEAT_SCHEDULE = {
     'siusti_menesine_ataskaita': {
         'task': 'Bendrija.ataskaita.siusti_menesine_ataskaita',
-        'schedule': crontab(day_of_month='6', hour='0', minute='0'),  # Kiekvieno mėnesio 8 diena, 00:00 val.
+        'schedule': crontab(day_of_month='6', hour='0', minute='0'),  # Kiekvieno mėnesio 6 diena, 00:00 val.
     },
 }
 

@@ -20,14 +20,20 @@
     <ul>
 
         {% for diskusija in diskusijos %}
-            <li>
-                <a href="{% url 'diskusija_detail' diskusija_id=diskusija.id %}">{{ diskusija.title }}</a>
-            </li>
-        {% endfor %}
+    <li>
+        <a href="{% url 'diskusija_detail' diskusija_id=diskusija.id %}">{{ diskusija.title }}</a><br>
+        Sukurta {{ diskusija.date|date:"F j, Y H:i" }}
+    </li>
+{% endfor %}
+
 
   {% else %}
             <p>Prašome prisijungti, kad galėtumėte pamatyti butų sąrašą.</p>
         {% endif %}
     </ul>
+
+<ul>
+    <li><a href="{% url 'index' %}">Atgal</a></li>
+</ul>
 </body>
 </html>

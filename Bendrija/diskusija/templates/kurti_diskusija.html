@@ -11,6 +11,12 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Sukurti Diskusiją</button>
+        <p>Sukurta: {{ nauja_diskusija.date }}</p>
     </form>
+
+
+<ul>
+    <li><a href="{% url 'index' %}">Atgal</a></li>
+</ul>
 </body>
 </html>

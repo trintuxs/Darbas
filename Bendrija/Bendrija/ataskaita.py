@@ -9,7 +9,7 @@ def siusti_menesine_ataskaita():
     # Paimame šios dienos datą
     today = date.today()
 
-    # Tikriname, ar šiandien yra mėnesio 8 diena
+    # Tikriname, ar šiandien yra mėnesio 6 diena
     if today.day == 6:
         # Gauname visus Kaupiamasis_Inasas objektus šiam mėnesiui
         kaupiamasis_inasas_objects = Kaupiamasis_Inasas.objects.all()
@@ -22,7 +22,7 @@ def siusti_menesine_ataskaita():
 
         # Skaičiuojame bendrą darbuotojų atlyginimų sumą
         bendra_atlyginimu_suma = darbuotojai.aggregate(total_wages=Sum('wage'))['total_wages'] or 0
-        flat_owner = Flat.objets()
+        flat_owner = Flat.objet.get()
         flats = Flat.objects.filter(owner=flat_owner)
 
         number_of_flats = flats.count()
@@ -30,7 +30,6 @@ def siusti_menesine_ataskaita():
             savininkui = bendra_atlyginimu_suma / number_of_flats
         else:
             savininkui = 0
-        
 
         # Ruosiamas el. laiško turinys su mėnesio ataskaita
         zinute = f"Mėnesio ataskaita:\n\n"

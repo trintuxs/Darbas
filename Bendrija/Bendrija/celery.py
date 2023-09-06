@@ -11,6 +11,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Bendrija.settings')
 
 app = Celery('Bendrija')
 
+
 # Įtraukti visus Django Celery konfigūracijos nustatymus
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
