@@ -5,14 +5,14 @@
     <li><a href="{% url 'index' %}">Atgal</a></li>
 </ul>
 
-<h1>Mano Mėnesinio Inaso</h1>
+<h1>Mano Mėnesinio Inašo info</h1>
 
 <table>
     <thead>
         <tr>
             <th>Buto Numeris</th>
             <th>Kvadratinio metro ikainis</th>
-            <th>Mėnesinis Inasas</th>
+            <th>Mėnesinis Inašas</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
     </tbody>
 </table>
 
-<h2>Bendras Visų Inasas: {{ total_inasas }}</h2>
+<h2>Bendras Visų Inašas: {{ total_inasas }}</h2>
 
 <h2>Išlaidos</h2>
 <ul>
@@ -42,7 +42,7 @@
 <p>Likutis: {{ balance|floatformat:2 }} €</p>
 
 <h2>
-    Darbuotoju informacija
+    Darbuotojų informacija
 </h2>
 
 {% for employee in staff %}

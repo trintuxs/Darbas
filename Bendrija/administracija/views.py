@@ -50,7 +50,10 @@ def index(request):
 
     return render(request, 'buto_inasas.html', context=context)
 
-
+'''
 def staff_list(request):
     staff = Staff.objects.all()
     return render(request, 'buto_inasas.html', {'staff': staff})
+
+'''
+

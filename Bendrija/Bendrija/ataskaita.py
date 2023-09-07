@@ -21,22 +21,22 @@ def siusti_menesine_ataskaita():
         darbuotojai = Staff.objects.all()
 
         # Skaičiuojame bendrą darbuotojų atlyginimų sumą
-        bendra_atlyginimu_suma = darbuotojai.aggregate(total_wages=Sum('wage'))['total_wages'] or 0
-        flat_owner = Flat.objet.get()
-        flats = Flat.objects.filter(owner=flat_owner)
+     #   bendra_atlyginimu_suma = darbuotojai.aggregate(total_wages=Sum('wage'))['total_wages'] or 0
+      #  flat_owner = Flat.objet.get()
+       # flats = Flat.objects.filter(owner=flat_owner)
 
-        number_of_flats = flats.count()
-        if number_of_flats > 0:
-            savininkui = bendra_atlyginimu_suma / number_of_flats
-        else:
-            savininkui = 0
+       # number_of_flats = flats.count()
+        #if number_of_flats > 0:
+         #   savininkui = bendra_atlyginimu_suma / number_of_flats
+       # else:
+        #    savininkui = 0
 
         # Ruosiamas el. laiško turinys su mėnesio ataskaita
         zinute = f"Mėnesio ataskaita:\n\n"
         zinute += f"Bendras mėnesinis sąskaitos sumavimas: {bendras_inasas} eur\n\n"
         zinute += f"Darbuotojų atlyginimų paskirstymas už būtus:\n"
-        for darbuotojas in darbuotojai:
-            zinute += f"{darbuotojas.duties}: {savininkui} eur\n"
+       # for darbuotojas in darbuotojai:
+         #   zinute += f"{darbuotojas.duties}: {savininkui} eur\n"
 
         # Siunčiame el. laišką visiems gyventojams, kurių el. pašto adresas nustatytas
         nuo_el_pastas = 'ilgoji4bendrija@gmail.com'

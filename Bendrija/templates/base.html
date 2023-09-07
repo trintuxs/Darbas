@@ -4,23 +4,10 @@
 <head>
 
     <title>{% block title %}Bendrija{% endblock %}</title>
-<style>
-    .sidebar  {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .sidebar li {
-    display: inline;
-    margin-right: 10px;
-    }
-</style>
-
-
-   
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<body >
+<body class="bodis">
 
     <div class="container-fluid">
         <div class="row">
@@ -34,13 +21,8 @@
 
                 <div class="col-sm-2">
                     {% block sidebar %}
-
-
-
-
-
-                        <div id="sidebar">
-                            <ul>
+                    <div id="sidebar">
+                            <ul class="sidebar-nav">
                                 <li><a href="{% url 'index' %}">Pagrindinis puslapis</a></li>
                                 <li><a href="{% url 'butas' %}">Butai</a></li>
                                 <li><a href="{% url 'gyventojas_list' %}">Gyventojai</a></li>
@@ -55,7 +37,7 @@
             {% block "content" %}
                     {% endblock %}
 
-<img src="media/img/butas.jpg" width="100%" height="100%">
+
 
         </div>
     </div>
