@@ -4,36 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Visos Diskusijos</title>
+    {% extends "base.html" %}
+{% block "content" %}
 </head>
 <body>
 
-<ul>
-    <li><a href="{% url 'index' %}">Atgal</a></li>
-</ul>
+
 
 
 
  {% if user.is_authenticated %}
 
     <h1>Visos Diskusijos</h1>
-    <a href="{% url 'kurti_diskusija' %}">Sukurti naują diskusiją</a>
-    <ul>
 
-        {% for diskusija in diskusijos %}
-    <li>
-        <a href="{% url 'diskusija_detail' diskusija_id=diskusija.id %}">{{ diskusija.title }}</a><br>
-        Sukurta {{ diskusija.date|date:"F j, Y H:i" }}
-    </li>
-{% endfor %}
+ <div>
+            <a href="{% url 'kurti_diskusija' %}">Sukurti naują diskusiją</a>
+        <ul>
+
+            {% for diskusija in diskusijos %}
+        <li>
+            <a href="{% url 'diskusija_detail' diskusija_id=diskusija.id %}">{{ diskusija.title }}</a><br>
+            Sukurta {{ diskusija.date|date:"F j, Y H:i" }}
+         </li>
+
+        {% endfor %}
 
 
-  {% else %}
+        {% else %}
             <p>Prašome prisijungti, kad galėtumėte pamatyti butų sąrašą.</p>
         {% endif %}
-    </ul>
-
-<ul>
+            </ul>
+</div>
+<ul class="back">
     <li><a href="{% url 'index' %}">Atgal</a></li>
 </ul>
 </body>
+{% endblock %}
 </html>

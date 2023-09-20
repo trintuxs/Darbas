@@ -6,10 +6,11 @@
 
 
     <h1>Butų sąrašas</h1>
+
     <ul>
         {% if user.is_authenticated %}
             {% for butas in butas %}
-                <li>{{ butas.flat_nr }} - {{ butas.size_kv }} kv.m.</li>
+                <li><b>{{ butas.flat_nr }} - {{ butas.size_kv }} kv.m.</b></li>
             {% endfor %}
         {% else %}
             <p>Prašome prisijungti, kad galėtumėte pamatyti butų sąrašą.</p>

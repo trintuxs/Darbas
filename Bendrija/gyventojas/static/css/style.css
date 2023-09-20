@@ -1,6 +1,8 @@
 .bodis {
-
-background-color: blue;
+    background-image: url('/static/img/fonas2.jpg');
+    background-size: cover; /* Pasirinktinai, pritaikyti paveikslėlį ekrano dydžiui */
+    background-repeat: no-repeat; /* Pasirinktinai, nekartoti fono paveikslėlio */
+    color: GreenYellow;
 
 }
 
@@ -9,4 +11,55 @@ background-color: blue;
     margin-top: 20px;
     padding: 0;
     list-style: none;
+    text-align: center;
 }
+
+.sidebar-nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    padding: 5px 10px;
+
+    color: green; /* Spalva teksto */
+    border-radius: 5px;
+}
+
+/* Pradiniai stiliai, kai pelė neužvedama ant nuorodos */
+.sidebar-nav a {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: Yellow;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+/* Stiliai, kai pelė užvedama ant nuorodos */
+.sidebar-nav a:hover {
+    background-color: yellow; /* Pavyzdys: pakeisti fono spalvą į geltoną */
+    color: red; /* Pavyzdys: pakeisti teksto spalvą į raudoną */
+    font-size: 16px;
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+h1, h2, p, ul  {
+text-align: center;
+}
+#lentele{
+    margin:0 auto;
+    text-align: center;
+}
+
+.row {
+    text-align: right;
+
+}
+

@@ -1,10 +1,10 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
-load_dotenv()
-from celery.schedules import crontab
 from django.utils.translation import gettext_lazy as _
+load_dotenv()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 LOGIN_REDIRECT_URL = '/'
@@ -142,17 +142,7 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = 'ilgoji4bendrija@gmail.com'
 
 # settings.py
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'  # Nurodo Celery brokerį (naudojame Redis)
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'  # Nurodo, kur Celery turi saugoti rezultatus
-CELERY_TIMEZONE = 'Europe/Vilnius'  # Nurodo laiko juostą
-CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-# Celery Beat konfigūracija
-CELERY_BEAT_SCHEDULE = {
-    'siusti_menesine_ataskaita': {
-        'task': 'Bendrija.ataskaita.siusti_menesine_ataskaita',
-        'schedule': crontab(day_of_month='6', hour='0', minute='0'),  # Kiekvieno mėnesio 6 diena, 00:00 val.
-    },
-}
+
 
 CSRF_TRUSTED_ORIGINS = ['https://bendrija.org', 'https://127.0.0.1', 'http://45.93.139.47']
 
